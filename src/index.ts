@@ -50,7 +50,7 @@ const isValidPlacement = (board: number[][], number: number, row:number, column:
     && !isNumberInColumn(board, number, column)
     && !isNumberInBox(board, number, row, column);
 
-const solveBoard = (board: number[][]) => {
+const solveBoard = (board: number[][]): boolean => {
   const internalBoard = board;
 
   for (let row = 0; row < GRID_SIZE; row += 1) {
