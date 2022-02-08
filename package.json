@@ -4,7 +4,9 @@
   "description": "sudoke solver in TypeScript",
   "main": "index.ts",
   "scripts": {
-    "lint": "eslint src/**/*.ts"
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": {

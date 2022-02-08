@@ -1,7 +1,10 @@
 /* eslint-disable no-console */
+type ArrayOfLength<T, Length extends number, Acc extends T[] = []> = Acc['length'] extends Length ? Acc : ArrayOfLength<T, Length, [T, ...Acc]>;
+type SudokuBoard = ArrayOfLength<ArrayOfLength<number, 9>, 9>;
+
 const GRID_SIZE = 9;
 
-const myBoard = [
+const myBoard: SudokuBoard = [
   [7, 0, 2, 0, 5, 0, 6, 0, 0],
   [0, 0, 0, 0, 0, 3, 0, 0, 0],
   [1, 0, 0, 0, 0, 9, 5, 0, 0],
@@ -13,7 +16,7 @@ const myBoard = [
   [0, 0, 7, 0, 4, 0, 2, 0, 3],
 ];
 
-const isNumberInRow = (board: number[][], number: number, row: number): boolean => {
+const isNumberInRow = (board: SudokuBoard, number: number, row: number): boolean => {
   for (let i = 0; i < GRID_SIZE; i += 1) {
     if (board[row][i] === number) {
       return true;
@@ -22,7 +25,7 @@ const isNumberInRow = (board: number[][], number: number, row: number): boolean 
   return false;
 };
 
-const isNumberInColumn = (board: number[][], number: number, column: number): boolean => {
+const isNumberInColumn = (board: SudokuBoard, number: number, column: number): boolean => {
   for (let i = 0; i < GRID_SIZE; i += 1) {
     if (board[i][column] === number) {
       return true;
@@ -31,7 +34,7 @@ const isNumberInColumn = (board: number[][], number: number, column: number): bo
   return false;
 };
 
-const isNumberInBox = (board: number[][], number: number, row: number, column: number): boolean => {
+const isNumberInBox = (board: SudokuBoard, number: number, row: number, column: number): boolean => {
   const localBoxRow = row - (row % 3);
   const localBoxColumn = column - (column % 3);
 
@@ -45,12 +48,11 @@ const isNumberInBox = (board: number[][], number: number, row: number, column: n
   return false;
 };
 
-const isValidPlacement = (board: number[][], number: number, row:number, column: number)
-  :boolean => !isNumberInRow(board, number, row)
+const isValidPlacement = (board: SudokuBoard, number: number, row:number, column: number): boolean => !isNumberInRow(board, number, row)
     && !isNumberInColumn(board, number, column)
     && !isNumberInBox(board, number, row, column);
 
-const solveBoard = (board: number[][]): boolean => {
+const solveBoard = (board: SudokuBoard): boolean => {
   const internalBoard = board;
 
   for (let row = 0; row < GRID_SIZE; row += 1) {
@@ -73,7 +75,7 @@ const solveBoard = (board: number[][]): boolean => {
   return true;
 };
 
-const printBoard = (board: number[][]): void => {
+const printBoard = (board: SudokuBoard): void => {
   let line = '';
   for (let row = 0; row < GRID_SIZE; row += 1) {
     if (row % 3 === 0 && row !== 0) {
