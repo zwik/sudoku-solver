@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-type ArrayOfLength<T, Length extends number, Acc extends T[] = []> = Acc['length'] extends Length ? Acc : ArrayOfLength<T, Length, [T, ...Acc]>;
-type SudokuBoard = ArrayOfLength<ArrayOfLength<number, 9>, 9>;
+import { SudokuBoard } from './types';
 
 const GRID_SIZE = 9;
 
