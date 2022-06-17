@@ -39,19 +39,19 @@ describe('sudoku solver', () => {
   });
 
   describe('isNumberInBox', () => {
-    it('should return true if the number is in the box', () => {
+    it('should return true if number 7 is in the box', () => {
       expect(isNumberInBox(myBoard, 7, 0, 0)).toBe(true);
     });
 
-    it('should return true if the number is in the box', () => {
+    it('should return true if number 5 is in the box', () => {
       expect(isNumberInBox(myBoard, 5, 0, 4)).toBe(true);
     });
 
-    it('should return true if the number is not in the box', () => {
+    it('should return true if number 3 is in the box', () => {
       expect(isNumberInBox(myBoard, 3, 8, 8)).toBe(true);
     });
 
-    it('should return false if the number is not in the box', () => {
+    it('should return false if a number is not in the box', () => {
       expect(isNumberInBox(myBoard, 3, 0, 0)).toBe(false);
     });
   });
