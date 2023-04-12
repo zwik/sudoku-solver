@@ -23,6 +23,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "typescript": "^5.0.4",
-    "vitest": "^0.30.0"
+    "vitest": "^0.30.1"
   }
 }
